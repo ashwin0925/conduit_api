@@ -6,6 +6,7 @@ var User = require('../../models/user');
 var articleRouter = require('./articles')
 var Article = require('../../models/article')
 
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.json({index: true});
