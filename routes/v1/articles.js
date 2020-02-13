@@ -24,7 +24,6 @@ router.get('/feed', auth.verifyToken, async(req, res) => {
     var user = await User.findOne({"_id" : req.user.userId})
     await Article.find({"author":{$in: user.following}})
     .sort({created: -1})
-    .skip(10)
     .limit(10)
     .exec((err, result) =>{
       if(err) return next(err)

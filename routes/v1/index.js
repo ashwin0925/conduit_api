@@ -27,16 +27,16 @@ router.get('/profiles/:username', auth.verifyToken, async(req, res)=>{
 })
 
 // //follow user
-// router.get('/profiles/:username/follow', auth.verifyToken, async(req, res)=>{
-//   try{
-//     var userId = await User.findOne(req.params.username)
-//   var user = await User.findByIdAndUpdate(req.user.userId, { $push: {"following": userId} }, {new:true})
-//   res.json({user: 'added to following'})
+router.get('/profiles/:username/follow', auth.verifyToken, async(req, res)=>{
+  try{
+    var userId = await User.findOne(req.params.username)
+  var user = await User.findByIdAndUpdate(req.user.userId, { $push: {"following": userId._id} }, {new:true})
+  res.json({user: 'added to following'})
 
-//   }catch(error){
-//     res.status(400).json(error)
-//   }
-// })
+  }catch(error){
+    res.status(400).json(error)
+  }
+})
 
 // //unfollow user
 // router.delete('/profiles/:username/follow', auth.verifyToken, async (req, res) => {
